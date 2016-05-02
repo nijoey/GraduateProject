@@ -18,7 +18,7 @@ var db = connection.database("shoppingcenter");
 var db2 = connection.database("shoppingcart");
 var db3 = connection.database("users");
 
-
+var i =0;
 var dbdata = [{
     name: 'Original Penguin Long-Sleeve Solid Oxford Dress Shirt',
     skills: ['60% Cotton', '40% Polyester', 'Machine Wash', 'Long sleeves', 'Shirttail hem','Made in Indonesia'],
@@ -198,7 +198,7 @@ var dbdata = [{
         image4: '',
         image5: '',
         price: 106.00
-    }]
+    }];
 
 db.exists(function (err, exists) {
     if (err) { concole.log("Error: ", err); }
@@ -228,7 +228,7 @@ db.exists(function (err, exists) {
 
 app.get('/', function (req, res) {
     res.send("Hello World !!");
-})
+});
 
 app.post('/api/deletecart', function(req,res){
     console.log(req.body);
@@ -240,8 +240,8 @@ app.post('/api/deletecart', function(req,res){
                     console.log("Yahoo !!!");
                     res.send("Success");
                 }
-    })
-})
+    });
+});
 
 app.post('/api/addtocart', function (req, res) {
     console.log(req.body);
@@ -262,23 +262,22 @@ app.post('/api/addtocart', function (req, res) {
         else {
             db2.create(function (err, data) {
                 console.log("shopping Cart does not exists");
-
                 if (err) { console.log("Error: ", err); }
                 else {
                     console.log("Success");
-
                     db2.save(req.body, function (err, resp) {
                         if (err) { console.log("Error: ", err) }
                         else {
                             console.log("Success ");
+                            i++;
+                            db2.save('_design/shopCart'+i, {
+                                all: {
+                                    map: function (doc) {
+                                        if (doc.username) emit(doc.username, { 'username': doc.username, 'id': doc._id, 'name': doc.productname, 'type': doc.description, 'price': doc.price, 'image': doc.image });
+                                    }
+                                }
+                            });
                             res.send("Success");
-                        }
-                    });
-                    db2.save('_design/shopCart', {
-                        all: {
-                            map: function (doc) {
-                                if (doc.username) emit(doc.username, { 'username': doc.username,'id': doc._id, 'name': doc.productname,'type': doc.description, 'price':doc.price, 'image':doc.image});
-                            }
                         }
                     });
                 }
@@ -359,7 +358,7 @@ app.post('/api/registeruser', function (req, res) {
 });
 
 app.get('/api/getcart', function (req, res) {
-    db2.view('shopCart/all', function(err,respose){
+    db2.view('shopCart'+i+'/all', function(err,respose){
         console.log(respose);
         res.send(respose);
     });
