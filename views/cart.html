@@ -1,0 +1,35 @@
+<div class="tot">
+  <h5>
+    <strong>GRAND TOTAL</strong>
+     $ {{total}}
+  </h5>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="freemind.nitesh@gmail.com">
+    <input type="hidden" name="item_name" value={{viewcart}}>
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="amount" value=${{total}}>
+    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+  </form>
+</div>
+<div ng-init="checkCart()">
+  <ul class="collection">
+    <li class="collection-item avatar" ng-repeat="user in productname | filter:user ">
+      <img ng-src="{{user.image}}" width="250" alt="" class="square">
+      <span class="title">{{user.name}}</span>
+      <ul>
+        <li ng-repeat="skill in user.skills">
+        {{$index+1}}.  {{skill}}
+        </li>
+      </ul>
+        <br> $ {{user.price}}
+        </p>
+      <!--<img src="img/str.jpg" alt="" class="square">
+      <span class="title">Name : {{user.name}}</span>
+      <p>{{user.price}}
+      </p>-->
+      <p hidden>{{total}}</p>
+      <a class="btn waves-effect waves-light deep-orange " ng-click="deleteCart(user.name,user.skills,user.type,user.id,total)"><i class="material-icons right">shopping_cart</i>Delete from Cart</a>
+    </li>
+  </ul>
+</div>

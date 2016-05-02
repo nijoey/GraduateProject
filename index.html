@@ -1,0 +1,117 @@
+<!doctype html>
+<html ng-app="ShoppingStore" >
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>Shopping Cart</title>
+     
+    <!-- jQuery, Angular -->
+    <script src="node_modules/angular/angular.js" type="text/javascript"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="js/controller.js"></script>
+           
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    
+ 
+  </head>
+  <body ng-controller="storeController">
+ <nav class="light-blue darken-4" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" class="brand-logo white-text">Retail Shopping Cart</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a id="register" ng-click="signUp()" id="mode3" href="#modal3" class="white-text">Register</a></li>
+            <li><a id="signin" ng-click="signIn()" href="#modalsignin" class="white-text">Login</a></li>
+            <li><a id="cart" ng-click="checkOut()" class="white-text">Check Out</a></li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+      <div ng-view></div>
+      <footer class="page-footer light-blue darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Shoppers Cart</h5>
+          <p class="grey-text text-lighten-4">I am a college students working on this project like it's my full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://niteshtechnicallife.blogspot.com/">Nitesh Joshi</a>
+      </div>
+    </div>
+  </footer>
+  
+    <div id="modalsignin" class="modal">
+        <div class="modal-content">
+            <h4>Sign in</h4>
+            <p>Sign in Shopping Cart</p>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input ng-model="siuserName" id="siuserName" type="text" class="validate">
+                            <label for="siuserName">User Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input ng-model="sipassword" id="sipassword" type="password" class="validate">
+                            <label for="sipassword">Password</label>
+                        </div>
+                    </div>
+                </form>
+                <p id="modalsigninerror" class="hide red-text text-darken-2">Looks like you mistyped your username or password.</p>
+                <p id="signinSuccess" class="hide green-text text-darken-1">Sign in Successfull. Welcome back.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" ng-click="authenticateUser(siuserName,sipassword);" id="reg" class=" modal-action waves-effect waves-orange btn-flat">Sign in</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+    
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <h4>Please Register</h4>
+            <p>Create your unique username on Shoping Cart</p>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input ng-model="userName" id="userName" type="text" class="validate">
+                            <label for="userName">User Name</label>
+                            <p id="errorAlert" class="hide red-text text-darken-2">Sorry! someone already took that username.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input ng-model="password" id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                </form>
+                <p id="regSuccess" class="hide green-text text-darken-1">Registration Successfull. Welcome to Shopping Cart.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" ng-click="registerUser(userName,password);" id="reg" class=" modal-action waves-effect waves-orange btn-flat">Register</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-orange btn-flat">Close</a>
+        </div>
+    </div>
+    
+  </body>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+</html>

@@ -1,0 +1,20 @@
+.tabs .indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: #ff5722;
+  will-change: left, right;
+}
+
+.tot {
+  float: right;
+  padding-right: 80px;
+}
+
+.collection{
+  border:none;
+}
+
+.collection .collection-item{
+   border-bottom: none;
+}

@@ -1,0 +1,129 @@
+<!--<ul>
+<li><a id="cart" ng-click="checkOut()" href="#" class="deep-orange-text">Check Out</a></li>
+<ul>-->
+  
+<div class="col s12 ">
+  <ul class="tabs">
+    <li class="tab col s3 "><a class="active deep-orange-text" href="#test1">Men</a></li>
+    <li class="tab col s3"><a class="deep-orange-text" href="#test2">Women</a></li>
+    <li class="tab col s3"><a class="deep-orange-text" href="#test3">Girls</a></li>
+    <li class="tab col s3"><a class="deep-orange-text" href="#test4">Boys</a></li>
+    <li class="tab col s3"><a class="deep-orange-text" href="#test5">Baby</a></li>
+  </ul>
+</div>
+<div id="test1" class="col s12">
+  <ul class="collection">
+    <li class="collection-item avatar" ng-repeat="user in customsFilter(name,'men')">
+      <img ng-src="{{user.image}}" width="250" alt="">
+      <span class="title">{{user.name}}</span>
+      <ul>
+        <li ng-repeat="skill in user.skills">
+        {{$index+1}}.  {{skill}}
+        </li>
+      </ul>
+        <p>
+        <br> $ {{user.price}}
+        </p>
+      <a class="btn waves-effect waves-light deep-orange " ng-click="addCart(user.name,user.skills,user.type,user.id,user.price,user.image)"><i class="material-icons right">shopping_cart</i>Add to Cart</a>
+    </li>
+  </ul>
+</div>
+<div id="test2" class="col s12">
+  <ul class="collection">
+    <li class="collection-item avatar" ng-repeat="user in customsFilter(name,'women')">
+      <img ng-src="{{user.image}}" width="250" alt="">
+      <span class="title">{{user.name}}</span>
+       <ul>
+        <li ng-repeat="skill in user.skills">
+        {{$index+1}}.  {{skill}}
+        </li>
+      </ul>
+      <p>
+       <br> $ {{user.price}}
+      </p>
+      <a class="btn waves-effect waves-light deep-orange " ng-click="addCart(user.name,user.skills,user.type,user.id,user.price,user.image)"><i class="material-icons right">shopping_cart</i>Add to Cart</a>
+    </li>
+  </ul>
+</div>
+<div id="test3" class="col s12">
+  <ul class="collection">
+    <li class="collection-item avatar" ng-repeat="user in customsFilter(name,'girls')">
+      <img ng-src="{{user.image}}" width="250" alt="">
+      <span class="title">{{user.name}}</span>
+       <ul>
+        <li ng-repeat="skill in user.skills">
+        {{$index+1}}.  {{skill}}
+        </li>
+      </ul>
+      <p>
+      <br> $ {{user.price}}
+      </p>
+      <a class="btn waves-effect waves-light deep-orange " ng-click="addCart(user.name,user.skills,user.type,user.id,user.price,user.image)"><i class="material-icons right">shopping_cart</i>Add to Cart</a>
+    </li>
+  </ul>
+</div>
+<div id="test4" class="col s12">
+  <ul class="collection">
+    <li class="collection-item avatar" ng-repeat="user in customsFilter(name,'boys')">
+      <img ng-src="{{user.image}}" width="250" alt="">
+      <span class="title">{{user.name}}</span>
+       <ul>
+        <li ng-repeat="skill in user.skills">
+        {{$index+1}}.  {{skill}}
+        </li>
+      </ul>
+      <p>
+       <br> $ {{user.price}}
+      </p>
+      <a class="btn waves-effect waves-light deep-orange " ng-click="addCart(user.name,user.skills,user.type,user.id,user.price,user.image)"><i class="material-icons right">shopping_cart</i>Add to Cart</a>
+    </li>
+  </ul>
+</div>
+<div id="test5" class="col s12">
+  <ul class="collection">
+    <li class="collection-item avatar" ng-repeat="user in customsFilter(name,'baby')">
+     <img ng-src="{{user.image}}" width="250" alt="">
+      <span class="title">{{user.name}}</span>
+       <ul>
+        <li ng-repeat="skill in user.skills">
+        {{$index+1}}.  {{skill}}
+        </li>
+      </ul>
+      <p>
+      <br> $ {{user.price}}
+      </p>
+      <a class="btn waves-effect waves-light deep-orange " ng-click="addCart(user.name,user.skills,user.type,user.id,user.price,user.image)"><i class="material-icons right">shopping_cart</i>Add to Cart</a>
+    </li>
+  </ul>
+</div>
+
+<!--<ul class="collection">
+  <li class="collection-item avatar" ng-repeat="user in name | filter:user ">
+    <img src="img/str.jpg" alt="" class="square">
+    <span class="title">{{user.name}}</span>
+    <p>{{user.skills}}<br> {{user.type}}
+    </p>
+    <a class="btn waves-effect waves-light deep-orange " ng-click="addCart(user.name,user.skills,user.type,user.id)"><i class="material-icons right">shopping_cart</i>Add to Cart</a>
+  </li>
+</ul>-->
+
+
+
+<!-- <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2">
+			
+			Search: <input ng-model="user">
+			<div class="span10">
+				
+				<ul class="users">
+				  <li ng-repeat="user in name | filter:user ">
+					{{user.name}}
+          {{user.skills}}
+          {{user.type}}
+				  </li>
+				</ul>
+			  </div>
+		  </div>
+        </div>
+    </div>-->
